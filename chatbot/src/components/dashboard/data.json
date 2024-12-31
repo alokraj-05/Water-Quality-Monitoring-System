@@ -1,0 +1,26 @@
+{
+  "graphs":{
+    "ph":{
+      "type":"bar",
+      "labels":["10:40","10:50","10:60","11:00","11:10","12:56"],
+      "datasets":[
+        {
+          "label":"ph",
+          "data":[6.4,7.0,7.3,7.4,7.2,8],
+          "backgroundColor":"#107877"
+        }
+      ]
+    },
+    "turbidity":{
+      "type":"bar",
+      "labels":["10:30","10:40","10:50","10:60","11:00","11:10"],
+      "datasets":[
+        {
+          "label":"turbidity",
+          "data":[11,20,25,45,30,50],
+          "backgroundColor":"#4ade80"
+        }
+      ]
+    }
+  }
+}
