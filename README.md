@@ -19,7 +19,7 @@
 
 - **Web development**
   - Frontend
-    - ractJs
+    - reactJs
     - chartJs
     - axios library
   - Backend
