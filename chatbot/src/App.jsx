@@ -1,57 +1,27 @@
-import { useEffect, useState } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import mongoose from "mongoose";
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Hero from "./components/Hero/Hero";
 import SignupForm from "./components/0Auth/signup";
 import DashBoard from "./components/dashboard/dashboard";
 import Login from "./components/0Auth/login";
+import Navbar from "./utils/Navbar";
+import { AuthProvider } from "./context/AuthContext";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Hero />,
-    errorElement: <div>Page found but lost</div>,
-  },
-  {
-    path: "/:type/:param",
-    element: <Hero />,
-  },
-  {
-    path: "/signup",
-    element: <SignupForm />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/dashboard",
-    element: <DashBoard />,
-  },
-]);
 function App() {
-  const [isToggled, setIsToggled] = useState(false);
-  const handleToggle = () => setIsToggled((perv) => !perv);
   return (
-    <RouterProvider router={router} />
-    // <BrowserRouter>
-    //   <div className="bg-gradient-to-bl from-gray-950 via-60% via-gray-900 to-gray-950">
-    //     <Chatbot isStyled={isToggled} />
-    //     <NavBar onToggleStyle={handleToggle} />
-    //     <Routes>
-    //       <Route path="/" element={<Hero />} />
-    //       <Route path="/:type/:param" element={<Hero />} />
-    //     </Routes>
-    //     <ProfileCarousel />
-    //   </div>
-    // </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/signup" element={<SignupForm />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
